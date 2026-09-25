@@ -24,7 +24,7 @@ struct Workspace: Codable, Identifiable {
 }
 
 enum MacAutomation {
-    static let captureScript = #"
+    static let captureScript = #"""
     tell application "System Events"
         set resultText to ""
         set rowSeparator to ASCII character 9
@@ -49,12 +49,12 @@ enum MacAutomation {
         end repeat
         return resultText
     end tell
-    "#
+    """#
 
     static func capture(bundleIdentifiers: [String: String]) throws -> [WorkspaceItem] {
         let output = try runAppleScript(captureScript)
         var seen = Set<String>()
-        return output.split(whereSeparator: \.isNewline).compactMap { row in
+        return output.split(whereSeparator: { $0.isNewline }).compactMap { row in
             let fields = row.split(separator: "\t", maxSplits: 2, omittingEmptySubsequences: false).map(String.init)
             guard fields.count == 3, let location = normalizedLocation(fields[2]) else { return nil }
             let key = fields[0] + "\u{0}" + location
@@ -105,7 +105,8 @@ enum MacAutomation {
             }
             return result.stringValue ?? ""
         }
-        return Thread.isMainThread ? try execute() : try DispatchQueue.main.sync(execute: execute)
+        if Thread.isMainThread { return try execute() }
+        return try DispatchQueue.main.sync(execute: execute)
     }
 
     static func normalizedLocation(_ value: String) -> String? {
