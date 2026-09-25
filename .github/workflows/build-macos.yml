@@ -1,0 +1,48 @@
+name: Build Window Workspace Restorer for macOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing GitHub release tag to receive the macOS builds
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ inputs.release_tag }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build app bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          arch='${{ matrix.arch }}'
+          app="$RUNNER_TEMP/WindowWorkspaceRestorer.app"
+          mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
+          cp macos/Info.plist "$app/Contents/Info.plist"
+          swiftc -swift-version 5 -target "${arch}-apple-macos13.0" \
+            -framework SwiftUI -framework AppKit \
+            -o "$app/Contents/MacOS/WindowWorkspaceRestorerMac" \
+            macos/WindowWorkspaceRestorerMac.swift
+          plutil -lint "$app/Contents/Info.plist"
+          codesign --force --deep --sign - "$app"
+          codesign --verify --deep --strict "$app"
+          asset="$RUNNER_TEMP/WindowWorkspaceRestorer-macOS-${arch}.zip"
+          ditto -c -k --sequesterRsrc --keepParent "$app" "$asset"
+          gh release upload "$RELEASE_TAG" "$asset" --repo "$GITHUB_REPOSITORY" --clobber

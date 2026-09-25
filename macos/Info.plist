@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>zh_CN</string>
+    <key>CFBundleExecutable</key>
+    <string>WindowWorkspaceRestorerMac</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.lotusfromkarasu.windowworkspacerestorer</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>Window Workspace Restorer</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>5.0.0</string>
+    <key>CFBundleVersion</key>
+    <string>5.0.0</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>Window Workspace Restorer 需要读取和恢复 Finder、Office、WPS 与 COMSOL 文档窗口。</string>
+    <key>NSAccessibilityUsageDescription</key>
+    <string>Window Workspace Restorer 需要读取应用窗口的文档路径，以保存和恢复工作区。</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+</dict>
+</plist>
