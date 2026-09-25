@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.9.12112.369 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowWorkspaceRestorer.App", "src\WindowWorkspaceRestorer.App\WindowWorkspaceRestorer.App.csproj", "{8F3D7F07-154C-4F5C-8D77-A0A4F4D13C43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowWorkspaceRestorer.Tests", "tests\WindowWorkspaceRestorer.Tests\WindowWorkspaceRestorer.Tests.csproj", "{A2B5D5DC-7F4B-4E17-8A88-7F9D4DA7EE1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F3D7F07-154C-4F5C-8D77-A0A4F4D13C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3D7F07-154C-4F5C-8D77-A0A4F4D13C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3D7F07-154C-4F5C-8D77-A0A4F4D13C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3D7F07-154C-4F5C-8D77-A0A4F4D13C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B5D5DC-7F4B-4E17-8A88-7F9D4DA7EE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B5D5DC-7F4B-4E17-8A88-7F9D4DA7EE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B5D5DC-7F4B-4E17-8A88-7F9D4DA7EE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B5D5DC-7F4B-4E17-8A88-7F9D4DA7EE1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

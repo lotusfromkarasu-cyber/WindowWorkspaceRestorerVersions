@@ -1,0 +1,13 @@
+.vs/
+**/bin/
+**/obj/
+**/artifacts/
+**/TestResults/
+**/Dependencies/packages/
+**/records*.json
+**/settings-v*.json
+*.user
+*.suo
+*.pdb
+*.dll
+*.exe
